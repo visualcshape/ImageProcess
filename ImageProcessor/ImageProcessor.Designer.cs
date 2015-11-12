@@ -32,12 +32,13 @@
             this._imageProcessTabControl = new System.Windows.Forms.TabControl();
             this._imageProcessTabPage1 = new System.Windows.Forms.TabPage();
             this._imageProcessTabPage2 = new System.Windows.Forms.TabPage();
-            this.tabPage1 = new System.Windows.Forms.TabPage();
+            this._imageProcessorTabPage3 = new System.Windows.Forms.TabPage();
             this._imageProcessTabPage4 = new System.Windows.Forms.TabPage();
             this._imageProcessTabPage5 = new System.Windows.Forms.TabPage();
             this._menuGroupBox = new System.Windows.Forms.GroupBox();
             this._restoreImageButton = new System.Windows.Forms.Button();
             this._loadImageButton = new System.Windows.Forms.Button();
+            this._openImageDialog = new System.Windows.Forms.OpenFileDialog();
             this.tableLayoutPanel1.SuspendLayout();
             this._imageProcessTabControl.SuspendLayout();
             this._menuGroupBox.SuspendLayout();
@@ -62,7 +63,7 @@
             // 
             this._imageProcessTabControl.Controls.Add(this._imageProcessTabPage1);
             this._imageProcessTabControl.Controls.Add(this._imageProcessTabPage2);
-            this._imageProcessTabControl.Controls.Add(this.tabPage1);
+            this._imageProcessTabControl.Controls.Add(this._imageProcessorTabPage3);
             this._imageProcessTabControl.Controls.Add(this._imageProcessTabPage4);
             this._imageProcessTabControl.Controls.Add(this._imageProcessTabPage5);
             this._imageProcessTabControl.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -92,15 +93,15 @@
             this._imageProcessTabPage2.Text = "2";
             this._imageProcessTabPage2.UseVisualStyleBackColor = true;
             // 
-            // tabPage1
+            // _imageProcessorTabPage3
             // 
-            this.tabPage1.Location = new System.Drawing.Point(4, 22);
-            this.tabPage1.Name = "tabPage1";
-            this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage1.Size = new System.Drawing.Size(590, 429);
-            this.tabPage1.TabIndex = 2;
-            this.tabPage1.Text = "3";
-            this.tabPage1.UseVisualStyleBackColor = true;
+            this._imageProcessorTabPage3.Location = new System.Drawing.Point(4, 22);
+            this._imageProcessorTabPage3.Name = "_imageProcessorTabPage3";
+            this._imageProcessorTabPage3.Padding = new System.Windows.Forms.Padding(3);
+            this._imageProcessorTabPage3.Size = new System.Drawing.Size(590, 429);
+            this._imageProcessorTabPage3.TabIndex = 2;
+            this._imageProcessorTabPage3.Text = "3";
+            this._imageProcessorTabPage3.UseVisualStyleBackColor = true;
             // 
             // _imageProcessTabPage4
             // 
@@ -155,6 +156,10 @@
             this._loadImageButton.UseVisualStyleBackColor = true;
             this._loadImageButton.Click += new System.EventHandler(this.ClickLoadImageButton);
             // 
+            // _openImageDialog
+            // 
+            this._openImageDialog.Filter = "Images|*.jpg;*.png*.bmp;*.jpeg;*.PNG";
+            // 
             // _imageProcessorForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
@@ -176,12 +181,13 @@
         private System.Windows.Forms.TabControl _imageProcessTabControl;
         private System.Windows.Forms.TabPage _imageProcessTabPage1;
         private System.Windows.Forms.TabPage _imageProcessTabPage2;
-        private System.Windows.Forms.TabPage tabPage1;
+        private System.Windows.Forms.TabPage _imageProcessorTabPage3;
         private System.Windows.Forms.TabPage _imageProcessTabPage4;
         private System.Windows.Forms.TabPage _imageProcessTabPage5;
         private System.Windows.Forms.GroupBox _menuGroupBox;
         private System.Windows.Forms.Button _restoreImageButton;
         private System.Windows.Forms.Button _loadImageButton;
+        private System.Windows.Forms.OpenFileDialog _openImageDialog;
 
 
     }

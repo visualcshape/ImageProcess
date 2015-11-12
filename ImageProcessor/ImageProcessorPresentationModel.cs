@@ -3,21 +3,32 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.ComponentModel;
 
 namespace ImageProcessor
 {
-    class ImageProcessorPresentationModel
+    class ImageProcessorPresentationModel : INotifyPropertyChanged
     {
-        bool _restoreImageButtonEnabled;
-        string _imagePath;
+        public event PropertyChangedEventHandler PropertyChanged;
 
-        ImageProcessorPresentationModel()
+        bool _restoreImageButtonEnabled;
+        GeneralModel _generalModel;
+
+        public ImageProcessorPresentationModel(GeneralModel generalModel)
         {
             _restoreImageButtonEnabled = false;
-            _imagePath = "";
+            _generalModel = generalModel;
         }
 
-        bool IsImageButtonEnabled
+        private void NotifyPropertyChanged(String propertyName = "")
+        {
+            if (PropertyChanged != null)
+            {
+                PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
+            }
+        }
+
+        public bool IsImageButtonEnabled
         {
             get
             {
@@ -28,21 +39,7 @@ namespace ImageProcessor
                 if (value != _restoreImageButtonEnabled)
                 {
                     _restoreImageButtonEnabled = value;
-                }
-            }
-        }
-
-        string ImagePath
-        {
-            get
-            {
-                return _imagePath;
-            }
-            set
-            {
-                if (value != _imagePath)
-                {
-                    _imagePath = value;
+                    NotifyPropertyChanged();
                 }
             }
         }

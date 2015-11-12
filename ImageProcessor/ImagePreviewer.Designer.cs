@@ -29,28 +29,45 @@
         private void InitializeComponent()
         {
             this._imagePreviewPanel = new System.Windows.Forms.Panel();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this._previrePictureBox = new System.Windows.Forms.PictureBox();
+            this._openImageDialog = new System.Windows.Forms.OpenFileDialog();
+            this._informationLabel = new System.Windows.Forms.Label();
             this._imagePreviewPanel.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this._previrePictureBox)).BeginInit();
             this.SuspendLayout();
             // 
             // _imagePreviewPanel
             // 
-            this._imagePreviewPanel.Controls.Add(this.pictureBox1);
+            this._imagePreviewPanel.Controls.Add(this._informationLabel);
+            this._imagePreviewPanel.Controls.Add(this._previrePictureBox);
             this._imagePreviewPanel.Dock = System.Windows.Forms.DockStyle.Fill;
             this._imagePreviewPanel.Location = new System.Drawing.Point(0, 0);
             this._imagePreviewPanel.Name = "_imagePreviewPanel";
             this._imagePreviewPanel.Size = new System.Drawing.Size(744, 500);
             this._imagePreviewPanel.TabIndex = 0;
             // 
-            // pictureBox1
+            // _previrePictureBox
             // 
-            this.pictureBox1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.pictureBox1.Location = new System.Drawing.Point(0, 0);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(744, 500);
-            this.pictureBox1.TabIndex = 0;
-            this.pictureBox1.TabStop = false;
+            this._previrePictureBox.Dock = System.Windows.Forms.DockStyle.Fill;
+            this._previrePictureBox.Location = new System.Drawing.Point(0, 0);
+            this._previrePictureBox.Name = "_previrePictureBox";
+            this._previrePictureBox.Size = new System.Drawing.Size(744, 500);
+            this._previrePictureBox.TabIndex = 0;
+            this._previrePictureBox.TabStop = false;
+            // 
+            // _openImageDialog
+            // 
+            this._openImageDialog.FileName = "openFileDialog1";
+            // 
+            // _informationLabel
+            // 
+            this._informationLabel.Dock = System.Windows.Forms.DockStyle.Fill;
+            this._informationLabel.Location = new System.Drawing.Point(0, 0);
+            this._informationLabel.Name = "_informationLabel";
+            this._informationLabel.Size = new System.Drawing.Size(744, 500);
+            this._informationLabel.TabIndex = 1;
+            this._informationLabel.Text = "請先載入圖片...";
+            this._informationLabel.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // ImagePreviewer
             // 
@@ -61,7 +78,7 @@
             this.Name = "ImagePreviewer";
             this.Text = "ImagePreviewer";
             this._imagePreviewPanel.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this._previrePictureBox)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -69,6 +86,8 @@
         #endregion
 
         private System.Windows.Forms.Panel _imagePreviewPanel;
-        private System.Windows.Forms.PictureBox pictureBox1;
+        private System.Windows.Forms.PictureBox _previrePictureBox;
+        private System.Windows.Forms.OpenFileDialog _openImageDialog;
+        private System.Windows.Forms.Label _informationLabel;
     }
 }
