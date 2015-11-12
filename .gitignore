@@ -1,0 +1,13 @@
+*.dev
+*.layout
+*.o
+*.exe
+*~
+Makefile.win
+*out.txt
+blah.txt
+bak-*
+new-*
+.idea/
+bin/
+obj/
