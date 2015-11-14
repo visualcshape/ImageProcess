@@ -7,19 +7,21 @@ using System.ComponentModel;
 
 namespace ImageProcessor
 {
-    class ImageProcessorPresentationModel : INotifyPropertyChanged
+    public class ImageProcessorPresentationModel : INotifyPropertyChanged
     {
         public event PropertyChangedEventHandler PropertyChanged;
 
         static ImageProcessorPresentationModel _instance = null;
         bool _restoreImageButtonEnabled;
         bool _openPreviewerButtonEnabled;
+        bool _processButtonsEnabled;
         GeneralModel _generalModel;
 
         public ImageProcessorPresentationModel(GeneralModel generalModel)
         {
             _restoreImageButtonEnabled = false;
             _openPreviewerButtonEnabled = false;
+            _processButtonsEnabled = false;
             _generalModel = generalModel;
             _instance = this;
         }
@@ -60,6 +62,22 @@ namespace ImageProcessor
                 if (value != _openPreviewerButtonEnabled)
                 {
                     _openPreviewerButtonEnabled = value;
+                    NotifyPropertyChanged();
+                }
+            }
+        }
+
+        public bool IsProcessedButtonsEnabled
+        {
+            get
+            {
+                return _processButtonsEnabled;
+            }
+            set
+            {
+                if (value != _processButtonsEnabled)
+                {
+                    _processButtonsEnabled = value;
                     NotifyPropertyChanged();
                 }
             }

@@ -18,7 +18,14 @@ namespace ImageProcessor
         public delegate void LoadProcessedImageEventHandler();
         public event LoadProcessedImageEventHandler LoadProcessedImage;
 
+        public enum ImageState
+        {
+            Original,
+            Processed
+        }
+
         string _imagePath;
+        ImageState _imageState;
         Image<Bgr, Byte> _originalImage;
         Image<Bgr, Byte> _processedImage;
 
@@ -39,14 +46,28 @@ namespace ImageProcessor
                 {
                     _imagePath = value;
                     _originalImage = new Image<Bgr, Byte>(_imagePath);
-                    LoadOrginalImage();
+                    _processedImage = new Image<Bgr, Byte>(_imagePath);
+                    FireLoadOriginalImageEvent();
                 }
             }
         }
 
         public void ResetToOriginalImage()
         {
+            FireLoadOriginalImageEvent();
+        }
+
+        private void FireLoadOriginalImageEvent()
+        {
+            CurrentImageState = ImageState.Original;
+            _processedImage = this.OriginalImage;
             LoadOrginalImage();
+        }
+
+        private void FireLoadProcessedImageEvent()
+        {
+            CurrentImageState = ImageState.Processed;
+            LoadProcessedImage();
         }
 
         public Image<Bgr, Byte> OriginalImage
@@ -68,7 +89,23 @@ namespace ImageProcessor
                 if (value != _processedImage)
                 {
                     _processedImage = value;
-                    LoadProcessedImage();
+                    FireLoadProcessedImageEvent();
+                }
+            }
+        }
+
+        public ImageState CurrentImageState
+        {
+            get
+            {
+                return _imageState;
+            }
+
+            set
+            {
+                if (value != _imageState)
+                {
+                    _imageState = value;                    
                 }
             }
         }

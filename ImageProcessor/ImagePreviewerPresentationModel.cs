@@ -25,13 +25,30 @@ namespace ImageProcessor
             _generalModel = generalModel;
             _borderSize = borderSize;
             IsInformationLabelVisible = true;
-            if (_generalModel.OriginalImage != null)
-                PictureBoxImage = _generalModel.OriginalImage.ToBitmap();
-            else
-                _pictureBoxImage = null;
+            DisplayImage();
             MakeFormSizeFitPicture();
             _generalModel.LoadOrginalImage += this.LoadOriginalImage;
             _generalModel.LoadProcessedImage += this.LoadProcessedImage;
+        }
+
+        private void DisplayImage()
+        {
+            switch (_generalModel.CurrentImageState)
+            {
+                case GeneralModel.ImageState.Original:
+                    {
+                        if (_generalModel.OriginalImage != null)
+                            PictureBoxImage = _generalModel.OriginalImage.ToBitmap();
+                        else
+                            PictureBoxImage = null;
+                    }
+                    break;
+                case GeneralModel.ImageState.Processed:
+                    {
+                        PictureBoxImage = _generalModel.ProcessedImage.ToBitmap();
+                    }
+                    break;
+            }
         }
 
         private void LoadOriginalImage()

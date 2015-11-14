@@ -16,7 +16,7 @@ namespace ImageProcessor
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new _imageProcessorForm());
+            Application.Run(new ImageProcessorForm());
         }
     }
 }

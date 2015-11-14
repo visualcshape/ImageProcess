@@ -1,6 +1,6 @@
 ﻿namespace ImageProcessor
 {
-    partial class _imageProcessorForm
+    partial class ImageProcessorForm
     {
         /// <summary>
         /// 設計工具所需的變數。
@@ -33,8 +33,8 @@
             this._basicOperationTabPage = new System.Windows.Forms.TabPage();
             this._mosaicTabPage = new System.Windows.Forms.TabPage();
             this._averagingTabPage = new System.Windows.Forms.TabPage();
-            this._imageProcessTabPage4 = new System.Windows.Forms.TabPage();
-            this._imageProcessTabPage5 = new System.Windows.Forms.TabPage();
+            this._sharpenTabPage = new System.Windows.Forms.TabPage();
+            this._edgeDetectiontabPage = new System.Windows.Forms.TabPage();
             this._menuGroupBox = new System.Windows.Forms.GroupBox();
             this._openPreviewerButton = new System.Windows.Forms.Button();
             this._resetImageButton = new System.Windows.Forms.Button();
@@ -65,8 +65,8 @@
             this._imageProcessTabControl.Controls.Add(this._basicOperationTabPage);
             this._imageProcessTabControl.Controls.Add(this._mosaicTabPage);
             this._imageProcessTabControl.Controls.Add(this._averagingTabPage);
-            this._imageProcessTabControl.Controls.Add(this._imageProcessTabPage4);
-            this._imageProcessTabControl.Controls.Add(this._imageProcessTabPage5);
+            this._imageProcessTabControl.Controls.Add(this._sharpenTabPage);
+            this._imageProcessTabControl.Controls.Add(this._edgeDetectiontabPage);
             this._imageProcessTabControl.Dock = System.Windows.Forms.DockStyle.Fill;
             this._imageProcessTabControl.Location = new System.Drawing.Point(122, 3);
             this._imageProcessTabControl.Name = "_imageProcessTabControl";
@@ -104,25 +104,25 @@
             this._averagingTabPage.Text = "Averaging";
             this._averagingTabPage.UseVisualStyleBackColor = true;
             // 
-            // _imageProcessTabPage4
+            // _sharpenTabPage
             // 
-            this._imageProcessTabPage4.Location = new System.Drawing.Point(4, 22);
-            this._imageProcessTabPage4.Name = "_imageProcessTabPage4";
-            this._imageProcessTabPage4.Padding = new System.Windows.Forms.Padding(3);
-            this._imageProcessTabPage4.Size = new System.Drawing.Size(590, 429);
-            this._imageProcessTabPage4.TabIndex = 3;
-            this._imageProcessTabPage4.Text = "4";
-            this._imageProcessTabPage4.UseVisualStyleBackColor = true;
+            this._sharpenTabPage.Location = new System.Drawing.Point(4, 22);
+            this._sharpenTabPage.Name = "_sharpenTabPage";
+            this._sharpenTabPage.Padding = new System.Windows.Forms.Padding(3);
+            this._sharpenTabPage.Size = new System.Drawing.Size(462, 319);
+            this._sharpenTabPage.TabIndex = 3;
+            this._sharpenTabPage.Text = "Sharpen - High-Boost Filter";
+            this._sharpenTabPage.UseVisualStyleBackColor = true;
             // 
-            // _imageProcessTabPage5
+            // _edgeDetectiontabPage
             // 
-            this._imageProcessTabPage5.Location = new System.Drawing.Point(4, 22);
-            this._imageProcessTabPage5.Name = "_imageProcessTabPage5";
-            this._imageProcessTabPage5.Padding = new System.Windows.Forms.Padding(3);
-            this._imageProcessTabPage5.Size = new System.Drawing.Size(590, 429);
-            this._imageProcessTabPage5.TabIndex = 4;
-            this._imageProcessTabPage5.Text = "5";
-            this._imageProcessTabPage5.UseVisualStyleBackColor = true;
+            this._edgeDetectiontabPage.Location = new System.Drawing.Point(4, 22);
+            this._edgeDetectiontabPage.Name = "_edgeDetectiontabPage";
+            this._edgeDetectiontabPage.Padding = new System.Windows.Forms.Padding(3);
+            this._edgeDetectiontabPage.Size = new System.Drawing.Size(462, 319);
+            this._edgeDetectiontabPage.TabIndex = 4;
+            this._edgeDetectiontabPage.Text = "Edge Detection";
+            this._edgeDetectiontabPage.UseVisualStyleBackColor = true;
             // 
             // _menuGroupBox
             // 
@@ -174,13 +174,13 @@
             // 
             this._openImageDialog.Filter = "Images|*.jpg;*.png*.bmp;*.jpeg;*.PNG;*.BMP";
             // 
-            // _imageProcessorForm
+            // ImageProcessorForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(595, 351);
             this.Controls.Add(this.tableLayoutPanel1);
-            this.Name = "_imageProcessorForm";
+            this.Name = "ImageProcessorForm";
             this.Text = "ImageProcessor";
             this.tableLayoutPanel1.ResumeLayout(false);
             this._imageProcessTabControl.ResumeLayout(false);
@@ -196,8 +196,8 @@
         private System.Windows.Forms.TabPage _basicOperationTabPage;
         private System.Windows.Forms.TabPage _mosaicTabPage;
         private System.Windows.Forms.TabPage _averagingTabPage;
-        private System.Windows.Forms.TabPage _imageProcessTabPage4;
-        private System.Windows.Forms.TabPage _imageProcessTabPage5;
+        private System.Windows.Forms.TabPage _sharpenTabPage;
+        private System.Windows.Forms.TabPage _edgeDetectiontabPage;
         private System.Windows.Forms.GroupBox _menuGroupBox;
         private System.Windows.Forms.Button _resetImageButton;
         private System.Windows.Forms.Button _loadImageButton;

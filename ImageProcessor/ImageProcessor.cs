@@ -10,12 +10,12 @@ using System.Windows.Forms;
 
 namespace ImageProcessor
 {
-    public partial class _imageProcessorForm : Form
+    public partial class ImageProcessorForm : Form
     {
         private ImageProcessorPresentationModel _presentationModel;
         private GeneralModel _generalModel;
 
-        public _imageProcessorForm()
+        public ImageProcessorForm()
         {
             _generalModel = new GeneralModel();
             _presentationModel = new ImageProcessorPresentationModel(_generalModel);
@@ -25,23 +25,29 @@ namespace ImageProcessor
             ImagePreviewer previewer = new ImagePreviewer(_generalModel);
             previewer.Show();
 
-            BasicOperationForm basicOperationForm = new BasicOperationForm();
+            BasicOperationForm basicOperationForm = new BasicOperationForm(_generalModel, _presentationModel);
             basicOperationForm.TopLevel = false;
             basicOperationForm.Dock = DockStyle.Fill;
             _basicOperationTabPage.Controls.Add(basicOperationForm);
             basicOperationForm.Show();
 
-            MosaicForm mosaicForm = new MosaicForm();
+            MosaicForm mosaicForm = new MosaicForm(_generalModel, _presentationModel);
             mosaicForm.TopLevel = false;
             mosaicForm.Dock = DockStyle.Fill;
             _mosaicTabPage.Controls.Add(mosaicForm);
             mosaicForm.Show();
 
-            AveragingForm averagingForm = new AveragingForm();
+            AveragingForm averagingForm = new AveragingForm(_generalModel, _presentationModel);
             averagingForm.TopLevel = false;
             averagingForm.Dock = DockStyle.Fill;
             _averagingTabPage.Controls.Add(averagingForm);
             averagingForm.Show();
+
+            SharpenForm sharpenForm = new SharpenForm(_generalModel, _presentationModel);
+            sharpenForm.TopLevel = false;
+            sharpenForm.Dock = DockStyle.Fill;
+            _sharpenTabPage.Controls.Add(sharpenForm);
+            sharpenForm.Show();
         }
 
         private void ClickLoadImageButton(object sender, EventArgs e)
@@ -52,19 +58,20 @@ namespace ImageProcessor
             {
                 _generalModel.ImagePath = _openImageDialog.FileName;
                 _presentationModel.IsImageButtonEnabled = true;
+                _presentationModel.IsProcessedButtonsEnabled = true;
             }
             else
             {
-
+                MessageBox.Show("Cannot open file.");
             }
             return;
         }
 
         private void BindData()
         {
-            string RESTORE_BUTTON_ENABLED_PROPERTY_NAME = "IsImageButtonEnabled";
-            string OPEN_PREVIEWER_ENABLED_PROPERTY_NAME = "IsOpenPreviewerEnabled";
-            string ENABLE_PROPERTY = "Enabled";
+            const string RESTORE_BUTTON_ENABLED_PROPERTY_NAME = "IsImageButtonEnabled";
+            const string OPEN_PREVIEWER_ENABLED_PROPERTY_NAME = "IsOpenPreviewerEnabled";
+            const string ENABLE_PROPERTY = "Enabled";
 
             _resetImageButton.DataBindings.Add(ENABLE_PROPERTY, _presentationModel, RESTORE_BUTTON_ENABLED_PROPERTY_NAME);
             _openPreviewerButton.DataBindings.Add(ENABLE_PROPERTY, _presentationModel, OPEN_PREVIEWER_ENABLED_PROPERTY_NAME);
