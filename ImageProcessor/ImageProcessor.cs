@@ -48,6 +48,12 @@ namespace ImageProcessor
             sharpenForm.Dock = DockStyle.Fill;
             _sharpenTabPage.Controls.Add(sharpenForm);
             sharpenForm.Show();
+
+            EdgeDetectionForm edgeDetectionForm = new EdgeDetectionForm(_generalModel, _presentationModel);
+            edgeDetectionForm.TopLevel = false;
+            edgeDetectionForm.Dock = DockStyle.Fill;
+            _edgeDetectiontabPage.Controls.Add(edgeDetectionForm);
+            edgeDetectionForm.Show();
         }
 
         private void ClickLoadImageButton(object sender, EventArgs e)

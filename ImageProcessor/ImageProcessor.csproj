@@ -68,6 +68,12 @@
     <Compile Include="BasicOperationForm.Designer.cs">
       <DependentUpon>BasicOperationForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="EdgeDetectionForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="EdgeDetectionForm.Designer.cs">
+      <DependentUpon>EdgeDetectionForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="GeneralModel.cs" />
     <Compile Include="ImagePreviewer.cs">
       <SubType>Form</SubType>
@@ -103,6 +109,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="BasicOperationForm.resx">
       <DependentUpon>BasicOperationForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="EdgeDetectionForm.resx">
+      <DependentUpon>EdgeDetectionForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="ImagePreviewer.resx">
       <DependentUpon>ImagePreviewer.cs</DependentUpon>

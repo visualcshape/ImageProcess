@@ -6,11 +6,18 @@ using System.Threading.Tasks;
 using Emgu.CV;
 using Emgu.CV.Structure;
 using Emgu.Util;
+using System.Drawing;
 
 namespace ImageProcessor
 {
-    class ImageProcessFunctions
+    public class ImageProcessFunctions
     {
+        public enum MaskType
+        {
+            Type1,
+            Type2
+        }
+
         public ImageProcessFunctions()
         {
 
@@ -167,13 +174,78 @@ namespace ImageProcessor
             return image;
         }
 
-        public Image<Bgr, byte> GetHighBoostFilteredImage(Image<Bgr, byte> sourceImage, int allFactor)
+        public Image<Bgr, byte> GetHighBoostFilteredImage(Image<Bgr, byte> sourceImage, float allFactor, MaskType type)
         {
             Image<Bgr, byte> returnImage = new Image<Bgr, byte>(sourceImage.Width, sourceImage.Height);
-            int[] firstMatrix = { 0, -1, 0, -1, allFactor + 4, -1, 0, -1, 0 };
-            int[] secondMatrix = { -1, -1, -1, -1, allFactor + 8, -1, -1, -1, -1 };
+            float[,] firstTypeMatrix = new float[3, 3]
+            {
+                {0, -1, 0},
+                { -1, allFactor + 4, -1},
+                { 0, -1, 0} 
+            };
+            float[,] secondTypeMatrix = new float[3, 3]
+            {
+                {-1, -1, -1},
+                { -1, allFactor + 8, -1},
+                {-1, -1, -1}
+            };
+
+            ConvolutionKernelF matrix = null;
+            switch (type)
+            {
+                case MaskType.Type1:
+                    matrix = new ConvolutionKernelF(firstTypeMatrix);
+                    break;
+                case MaskType.Type2:
+                    matrix = new ConvolutionKernelF(secondTypeMatrix);
+                    break;
+            }
+
+            CvInvoke.Filter2D(sourceImage, returnImage, matrix, new Point(0, 0));
 
             return returnImage;
+        }
+
+        public Image<Bgr, byte> GetSobel(Image<Bgr,byte> sourceImage, int threshold)
+        {
+            Image<Bgr, byte> result = new Image<Bgr, byte>(sourceImage.Width,sourceImage.Height);
+
+            Image<Gray, byte> graySourceImage = sourceImage.Convert<Gray, byte>();
+            Image<Gray, float> sobelX = graySourceImage.Sobel(1, 0, 3);
+            Image<Gray, float> sobelY = graySourceImage.Sobel(0, 1, 3);
+            sobelX = sobelX.AbsDiff(new Gray(0));
+            sobelY = sobelY.AbsDiff(new Gray(0));
+
+            Image<Gray, float> sobel = sobelX + sobelY;
+            double[] mins, maxs;
+            Point[] minLocation, maxLocation;
+
+            sobel.MinMax(out mins, out maxs, out minLocation, out maxLocation);
+
+            Image<Gray, byte> sobelImage = sobel.ConvertScale<byte>(255 / maxs[0], 0);
+            sobelImage._ThresholdBinary(new Gray(threshold), new Gray(255));
+            result = sobelImage.Convert<Bgr, byte>();
+            return result;
+        }
+
+        public Image<Bgr, byte> GetLaplacian(Image<Bgr, byte> sourceImage, int aperture)
+        {
+            Image<Gray, byte> graySourceImage = sourceImage.Convert<Gray, byte>();
+
+            Image<Gray, float> floatGrayResult = graySourceImage.Laplace(aperture);
+
+            Image<Bgr,byte> result = floatGrayResult.Convert<Bgr, byte>();
+
+            return result;
+        }
+
+        public Image<Bgr, byte> GetCanny(Image<Bgr, byte> sourceImage, int thresh, int threshLinking)
+        {
+            Image<Gray, byte> graySourceImage = sourceImage.Convert<Gray, byte>();
+            Image<Gray, byte> cannyImage = graySourceImage.Canny((double)thresh, (double)threshLinking);
+            cannyImage._ThresholdBinary(new Gray(125), new Gray(255));
+            
+            return cannyImage.Convert<Bgr,byte>();
         }
     }
 }

@@ -37,9 +37,22 @@ namespace ImageProcessor
         private void ClickHighBoostFilteringButton(object sender, EventArgs e)
         {
             ImageProcessFunctions functions = new ImageProcessFunctions();
-            int allFactor = (int)_allPassFactorNumericUpDown.Value;
-            Image<Bgr, byte> filteredImage = functions.GetHighBoostFilteredImage(_generalModel.ProcessedImage, allFactor);
+            float allFactor = (float)_allPassFactorNumericUpDown.Value;
+            ImageProcessFunctions.MaskType type = _presentationModel.CheckedType;
+            Image<Bgr, byte> filteredImage = functions.GetHighBoostFilteredImage(_generalModel.ProcessedImage, allFactor,type);
             _generalModel.ProcessedImage = filteredImage;
+        }
+
+        private void CheckTypeRadioButton(object sender, EventArgs e)
+        {
+            if (_maskType1RadioButton.Checked)
+            {
+                _presentationModel.CheckedType = ImageProcessFunctions.MaskType.Type1;
+            }
+            else
+            {
+                _presentationModel.CheckedType = ImageProcessFunctions.MaskType.Type2;
+            }
         }
     }
 }

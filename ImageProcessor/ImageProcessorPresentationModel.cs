@@ -15,6 +15,7 @@ namespace ImageProcessor
         bool _restoreImageButtonEnabled;
         bool _openPreviewerButtonEnabled;
         bool _processButtonsEnabled;
+        ImageProcessFunctions.MaskType _checkedType;
         GeneralModel _generalModel;
 
         public ImageProcessorPresentationModel(GeneralModel generalModel)
@@ -22,6 +23,7 @@ namespace ImageProcessor
             _restoreImageButtonEnabled = false;
             _openPreviewerButtonEnabled = false;
             _processButtonsEnabled = false;
+            _checkedType = ImageProcessFunctions.MaskType.Type1;
             _generalModel = generalModel;
             _instance = this;
         }
@@ -79,6 +81,21 @@ namespace ImageProcessor
                 {
                     _processButtonsEnabled = value;
                     NotifyPropertyChanged();
+                }
+            }
+        }
+
+        public ImageProcessFunctions.MaskType CheckedType
+        {
+            get
+            {
+                return _checkedType;
+            }
+            set
+            {
+                if (value != _checkedType)
+                {
+                    _checkedType = value;
                 }
             }
         }
