@@ -28,29 +28,53 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this._imagePreviewPanel = new System.Windows.Forms.Panel();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this._informationLabel = new System.Windows.Forms.Label();
+            this._previewerPictureBox = new System.Windows.Forms.PictureBox();
+            this._openImageDialog = new System.Windows.Forms.OpenFileDialog();
+            this.imagePreviewerPresentationModelBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this._imagePreviewPanel.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this._previewerPictureBox)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.imagePreviewerPresentationModelBindingSource)).BeginInit();
             this.SuspendLayout();
             // 
             // _imagePreviewPanel
             // 
-            this._imagePreviewPanel.Controls.Add(this.pictureBox1);
+            this._imagePreviewPanel.Controls.Add(this._informationLabel);
+            this._imagePreviewPanel.Controls.Add(this._previewerPictureBox);
             this._imagePreviewPanel.Dock = System.Windows.Forms.DockStyle.Fill;
             this._imagePreviewPanel.Location = new System.Drawing.Point(0, 0);
             this._imagePreviewPanel.Name = "_imagePreviewPanel";
             this._imagePreviewPanel.Size = new System.Drawing.Size(744, 500);
             this._imagePreviewPanel.TabIndex = 0;
             // 
-            // pictureBox1
+            // _informationLabel
             // 
-            this.pictureBox1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.pictureBox1.Location = new System.Drawing.Point(0, 0);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(744, 500);
-            this.pictureBox1.TabIndex = 0;
-            this.pictureBox1.TabStop = false;
+            this._informationLabel.Dock = System.Windows.Forms.DockStyle.Fill;
+            this._informationLabel.Location = new System.Drawing.Point(0, 0);
+            this._informationLabel.Name = "_informationLabel";
+            this._informationLabel.Size = new System.Drawing.Size(744, 500);
+            this._informationLabel.TabIndex = 1;
+            this._informationLabel.Text = "請先載入圖片...";
+            this._informationLabel.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // _previewerPictureBox
+            // 
+            this._previewerPictureBox.Dock = System.Windows.Forms.DockStyle.Fill;
+            this._previewerPictureBox.Location = new System.Drawing.Point(0, 0);
+            this._previewerPictureBox.Name = "_previewerPictureBox";
+            this._previewerPictureBox.Size = new System.Drawing.Size(744, 500);
+            this._previewerPictureBox.TabIndex = 0;
+            this._previewerPictureBox.TabStop = false;
+            // 
+            // _openImageDialog
+            // 
+            this._openImageDialog.FileName = "openFileDialog1";
+            // 
+            // imagePreviewerPresentationModelBindingSource
+            // 
+            this.imagePreviewerPresentationModelBindingSource.DataSource = typeof(ImageProcessor.ImagePreviewerPresentationModel);
             // 
             // ImagePreviewer
             // 
@@ -58,10 +82,14 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(744, 500);
             this.Controls.Add(this._imagePreviewPanel);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
+            this.MaximizeBox = false;
             this.Name = "ImagePreviewer";
             this.Text = "ImagePreviewer";
+            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.CloseForm);
             this._imagePreviewPanel.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this._previewerPictureBox)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.imagePreviewerPresentationModelBindingSource)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -69,6 +97,9 @@
         #endregion
 
         private System.Windows.Forms.Panel _imagePreviewPanel;
-        private System.Windows.Forms.PictureBox pictureBox1;
+        private System.Windows.Forms.PictureBox _previewerPictureBox;
+        private System.Windows.Forms.OpenFileDialog _openImageDialog;
+        private System.Windows.Forms.Label _informationLabel;
+        private System.Windows.Forms.BindingSource imagePreviewerPresentationModelBindingSource;
     }
 }

@@ -3,21 +3,36 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.ComponentModel;
 
 namespace ImageProcessor
 {
-    class ImageProcessorPresentationModel
+    class ImageProcessorPresentationModel : INotifyPropertyChanged
     {
-        bool _restoreImageButtonEnabled;
-        string _imagePath;
+        public event PropertyChangedEventHandler PropertyChanged;
 
-        ImageProcessorPresentationModel()
+        static ImageProcessorPresentationModel _instance = null;
+        bool _restoreImageButtonEnabled;
+        bool _openPreviewerButtonEnabled;
+        GeneralModel _generalModel;
+
+        public ImageProcessorPresentationModel(GeneralModel generalModel)
         {
             _restoreImageButtonEnabled = false;
-            _imagePath = "";
+            _openPreviewerButtonEnabled = false;
+            _generalModel = generalModel;
+            _instance = this;
         }
 
-        bool IsImageButtonEnabled
+        private void NotifyPropertyChanged(String propertyName = "")
+        {
+            if (PropertyChanged != null)
+            {
+                PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
+            }
+        }
+
+        public bool IsImageButtonEnabled
         {
             get
             {
@@ -28,22 +43,33 @@ namespace ImageProcessor
                 if (value != _restoreImageButtonEnabled)
                 {
                     _restoreImageButtonEnabled = value;
+                    NotifyPropertyChanged();
                 }
             }
         }
 
-        string ImagePath
+        public bool IsOpenPreviewerEnabled
         {
             get
             {
-                return _imagePath;
+                return _openPreviewerButtonEnabled;
             }
+
             set
             {
-                if (value != _imagePath)
+                if (value != _openPreviewerButtonEnabled)
                 {
-                    _imagePath = value;
+                    _openPreviewerButtonEnabled = value;
+                    NotifyPropertyChanged();
                 }
+            }
+        }
+
+        static public ImageProcessorPresentationModel ImageProcesseorPresentationModel
+        {
+            get
+            {
+                return _instance;
             }
         }
     }
