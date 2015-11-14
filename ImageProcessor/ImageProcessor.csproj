@@ -32,6 +32,18 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Emgu.CV, Version=3.0.0.2157, Culture=neutral, PublicKeyToken=7281126722ab4438, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>.\Emgu.CV.dll</HintPath>
+    </Reference>
+    <Reference Include="Emgu.CV.UI, Version=3.0.0.2157, Culture=neutral, PublicKeyToken=7281126722ab4438, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>.\Emgu.CV.UI.dll</HintPath>
+    </Reference>
+    <Reference Include="Emgu.Util, Version=3.0.0.2157, Culture=neutral, PublicKeyToken=7281126722ab4438, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>.\Emgu.Util.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
@@ -44,6 +56,18 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AveragingForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="AveragingForm.Designer.cs">
+      <DependentUpon>AveragingForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="BasicOperationForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="BasicOperationForm.Designer.cs">
+      <DependentUpon>BasicOperationForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="GeneralModel.cs" />
     <Compile Include="ImagePreviewer.cs">
       <SubType>Form</SubType>
@@ -51,6 +75,7 @@
     <Compile Include="ImagePreviewer.Designer.cs">
       <DependentUpon>ImagePreviewer.cs</DependentUpon>
     </Compile>
+    <Compile Include="ImagePreviewerPresentationModel.cs" />
     <Compile Include="ImageProcessor.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -58,13 +83,28 @@
       <DependentUpon>ImageProcessor.cs</DependentUpon>
     </Compile>
     <Compile Include="ImageProcessorPresentationModel.cs" />
+    <Compile Include="MosaicForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="MosaicForm.Designer.cs">
+      <DependentUpon>MosaicForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="AveragingForm.resx">
+      <DependentUpon>AveragingForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="BasicOperationForm.resx">
+      <DependentUpon>BasicOperationForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="ImagePreviewer.resx">
       <DependentUpon>ImagePreviewer.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="ImageProcessor.resx">
       <DependentUpon>ImageProcessor.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="MosaicForm.resx">
+      <DependentUpon>MosaicForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
@@ -75,7 +115,7 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
-    <None Include="Properties\DataSources\ImageProcessorPresentationModel.datasource" />
+    <None Include="Properties\DataSources\ImagePreviewerPresentationModel.datasource" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -88,6 +128,29 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="cvextern.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Emgu.CV.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Emgu.CV.UI.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Emgu.Util.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="msvcp120.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="msvcr120.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="opencv_ffmpeg300.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

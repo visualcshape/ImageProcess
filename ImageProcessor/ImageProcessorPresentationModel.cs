@@ -11,13 +11,17 @@ namespace ImageProcessor
     {
         public event PropertyChangedEventHandler PropertyChanged;
 
+        static ImageProcessorPresentationModel _instance = null;
         bool _restoreImageButtonEnabled;
+        bool _openPreviewerButtonEnabled;
         GeneralModel _generalModel;
 
         public ImageProcessorPresentationModel(GeneralModel generalModel)
         {
             _restoreImageButtonEnabled = false;
+            _openPreviewerButtonEnabled = false;
             _generalModel = generalModel;
+            _instance = this;
         }
 
         private void NotifyPropertyChanged(String propertyName = "")
@@ -41,6 +45,31 @@ namespace ImageProcessor
                     _restoreImageButtonEnabled = value;
                     NotifyPropertyChanged();
                 }
+            }
+        }
+
+        public bool IsOpenPreviewerEnabled
+        {
+            get
+            {
+                return _openPreviewerButtonEnabled;
+            }
+
+            set
+            {
+                if (value != _openPreviewerButtonEnabled)
+                {
+                    _openPreviewerButtonEnabled = value;
+                    NotifyPropertyChanged();
+                }
+            }
+        }
+
+        static public ImageProcessorPresentationModel ImageProcesseorPresentationModel
+        {
+            get
+            {
+                return _instance;
             }
         }
     }
