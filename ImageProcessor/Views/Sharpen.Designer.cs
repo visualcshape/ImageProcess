@@ -35,8 +35,8 @@
             this._maskTypeLabel = new System.Windows.Forms.Label();
             this._maskTypeRadioButtonGroupBox = new System.Windows.Forms.GroupBox();
             this._typeRadioButtonPanel = new System.Windows.Forms.Panel();
-            this._maskType1RadioButton = new System.Windows.Forms.RadioButton();
             this._maskType2RadioButton = new System.Windows.Forms.RadioButton();
+            this._maskType1RadioButton = new System.Windows.Forms.RadioButton();
             this.tableLayoutPanel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this._allPassFactorNumericUpDown)).BeginInit();
             this._maskTypeRadioButtonGroupBox.SuspendLayout();
@@ -147,6 +147,18 @@
             this._typeRadioButtonPanel.Size = new System.Drawing.Size(187, 33);
             this._typeRadioButtonPanel.TabIndex = 0;
             // 
+            // _maskType2RadioButton
+            // 
+            this._maskType2RadioButton.AutoSize = true;
+            this._maskType2RadioButton.Dock = System.Windows.Forms.DockStyle.Left;
+            this._maskType2RadioButton.Location = new System.Drawing.Point(29, 0);
+            this._maskType2RadioButton.Name = "_maskType2RadioButton";
+            this._maskType2RadioButton.Size = new System.Drawing.Size(29, 33);
+            this._maskType2RadioButton.TabIndex = 1;
+            this._maskType2RadioButton.Text = "2";
+            this._maskType2RadioButton.UseVisualStyleBackColor = true;
+            this._maskType2RadioButton.CheckedChanged += new System.EventHandler(this.CheckTypeRadioButton);
+            // 
             // _maskType1RadioButton
             // 
             this._maskType1RadioButton.AutoSize = true;
@@ -160,18 +172,6 @@
             this._maskType1RadioButton.Text = "1";
             this._maskType1RadioButton.UseVisualStyleBackColor = true;
             this._maskType1RadioButton.CheckedChanged += new System.EventHandler(this.CheckTypeRadioButton);
-            // 
-            // _maskType2RadioButton
-            // 
-            this._maskType2RadioButton.AutoSize = true;
-            this._maskType2RadioButton.Dock = System.Windows.Forms.DockStyle.Left;
-            this._maskType2RadioButton.Location = new System.Drawing.Point(29, 0);
-            this._maskType2RadioButton.Name = "_maskType2RadioButton";
-            this._maskType2RadioButton.Size = new System.Drawing.Size(29, 33);
-            this._maskType2RadioButton.TabIndex = 1;
-            this._maskType2RadioButton.Text = "2";
-            this._maskType2RadioButton.UseVisualStyleBackColor = true;
-            this._maskType2RadioButton.CheckedChanged += new System.EventHandler(this.CheckTypeRadioButton);
             // 
             // SharpenForm
             // 

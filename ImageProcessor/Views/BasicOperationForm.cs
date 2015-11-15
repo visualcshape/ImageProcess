@@ -15,12 +15,12 @@ namespace ImageProcessor
 {
     public partial class BasicOperationForm : Form
     {
-        GeneralModel _generalModel;
-        ImageProcessorPresentationModel _presenatationModel;
+        VideoModel _videoModel;
+        VideoProcessorPresentationModel _presenatationModel;
 
-        public BasicOperationForm(GeneralModel generalModel,ImageProcessorPresentationModel presenationModel)
+        public BasicOperationForm(VideoModel videoModel,VideoProcessorPresentationModel presenationModel)
         {
-            _generalModel = generalModel;
+            _videoModel = videoModel;
             _presenatationModel = presenationModel;
             InitializeComponent();
             BindData();
@@ -38,24 +38,24 @@ namespace ImageProcessor
 
         private void ClickGrayScaleButton(object sender, EventArgs e)
         {
-            ImageProcessFunctions functions = new ImageProcessFunctions();
-            Image<Bgr, byte> grayImage = functions.GetGrayScale(_generalModel.ProcessedImage);
-            _generalModel.ProcessedImage = grayImage;
+            _videoModel.SetProcessMethod(ImageProcessFunctions.Methods.GrayScale);
+            _videoModel.Play();
         }
 
         private void ClickThresholdingButton(object sender, EventArgs e)
         {
             ImageProcessFunctions functions = new ImageProcessFunctions();
             int thresholdValue = _thresholdScaleTrackBar.Value;
-            Image<Bgr, byte> thresholdImage = functions.GetThresholding(_generalModel.ProcessedImage,thresholdValue);
-            _generalModel.ProcessedImage = thresholdImage;
+
+            _videoModel.SetProcessMethod(ImageProcessFunctions.Methods.Thresholding, thresholdValue);
+            _videoModel.Play();
         }
 
         private void ClickInverseButton(object sender, EventArgs e)
         {
             ImageProcessFunctions functions = new ImageProcessFunctions();
-            Image<Bgr, byte> inversedImage = functions.GetInverse(_generalModel.ProcessedImage);
-            _generalModel.ProcessedImage = inversedImage;
+            _videoModel.SetProcessMethod(ImageProcessFunctions.Methods.Inverse);
+            _videoModel.Play();
         }
     }
 }

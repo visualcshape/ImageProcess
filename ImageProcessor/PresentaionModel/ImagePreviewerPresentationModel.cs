@@ -14,13 +14,13 @@ namespace ImageProcessor
         public event PropertyChangedEventHandler PropertyChanged;
 
         Image _pictureBoxImage;
-        GeneralModel _generalModel;
+        ImageModel _generalModel;
         bool _informationLabelVisible;
         Size _formSize;
         Size DEFAULT_FORM_SIZE = new Size(960, 720);
         Size _borderSize;
 
-        public ImagePreviewerPresentationModel(GeneralModel generalModel, Size borderSize)
+        public ImagePreviewerPresentationModel(ImageModel generalModel, Size borderSize)
         {
             _generalModel = generalModel;
             _borderSize = borderSize;
@@ -35,7 +35,7 @@ namespace ImageProcessor
         {
             switch (_generalModel.CurrentImageState)
             {
-                case GeneralModel.ImageState.Original:
+                case ImageModel.ImageState.Original:
                     {
                         if (_generalModel.OriginalImage != null)
                             PictureBoxImage = _generalModel.OriginalImage.ToBitmap();
@@ -43,7 +43,7 @@ namespace ImageProcessor
                             PictureBoxImage = null;
                     }
                     break;
-                case GeneralModel.ImageState.Processed:
+                case ImageModel.ImageState.Processed:
                     {
                         PictureBoxImage = _generalModel.ProcessedImage.ToBitmap();
                     }

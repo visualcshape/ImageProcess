@@ -15,12 +15,12 @@ namespace ImageProcessor
 {
     public partial class SharpenForm : Form
     {
-        GeneralModel _generalModel;
-        ImageProcessorPresentationModel _presentationModel;
+        VideoModel _videoModel;
+        VideoProcessorPresentationModel _presentationModel;
 
-        public SharpenForm(GeneralModel generalModel,ImageProcessorPresentationModel presentaionModel)
+        public SharpenForm(VideoModel videoModel,VideoProcessorPresentationModel presentaionModel)
         {
-            _generalModel = generalModel;
+            _videoModel = videoModel;
             _presentationModel = presentaionModel;
             InitializeComponent();
             BindData();
@@ -39,8 +39,9 @@ namespace ImageProcessor
             ImageProcessFunctions functions = new ImageProcessFunctions();
             float allFactor = (float)_allPassFactorNumericUpDown.Value;
             ImageProcessFunctions.MaskType type = _presentationModel.CheckedType;
-            Image<Bgr, byte> filteredImage = functions.GetHighBoostFilteredImage(_generalModel.ProcessedImage, allFactor,type);
-            _generalModel.ProcessedImage = filteredImage;
+
+            _videoModel.SetProcessMethod(ImageProcessFunctions.Methods.HighBoost, floatArgument: allFactor, maskType: type);
+            _videoModel.Play();
         }
 
         private void CheckTypeRadioButton(object sender, EventArgs e)

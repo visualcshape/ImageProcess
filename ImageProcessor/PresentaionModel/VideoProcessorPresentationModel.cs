@@ -7,24 +7,21 @@ using System.ComponentModel;
 
 namespace ImageProcessor
 {
-    public class ImageProcessorPresentationModel : INotifyPropertyChanged
+    public class VideoProcessorPresentationModel : INotifyPropertyChanged
     {
         public event PropertyChangedEventHandler PropertyChanged;
 
-        static ImageProcessorPresentationModel _instance = null;
-        bool _restoreImageButtonEnabled;
-        bool _openPreviewerButtonEnabled;
+        static VideoProcessorPresentationModel _instance = null;
         bool _processButtonsEnabled;
+        string _hintLabelText;
         ImageProcessFunctions.MaskType _checkedType;
-        GeneralModel _generalModel;
 
-        public ImageProcessorPresentationModel(GeneralModel generalModel)
+        public VideoProcessorPresentationModel()
         {
-            _restoreImageButtonEnabled = false;
-            _openPreviewerButtonEnabled = false;
+            const string DEFAULT_HINT_MESSAGE = "載入影片後，按下任一影像處理方法鍵便會開始撥放影片。";
+            _hintLabelText = DEFAULT_HINT_MESSAGE;
             _processButtonsEnabled = false;
             _checkedType = ImageProcessFunctions.MaskType.Type1;
-            _generalModel = generalModel;
             _instance = this;
         }
 
@@ -36,34 +33,17 @@ namespace ImageProcessor
             }
         }
 
-        public bool IsImageButtonEnabled
+        public string HintLabelText
         {
             get
             {
-                return _restoreImageButtonEnabled;
+                return _hintLabelText;
             }
             set
             {
-                if (value != _restoreImageButtonEnabled)
+                if (_hintLabelText != value)
                 {
-                    _restoreImageButtonEnabled = value;
-                    NotifyPropertyChanged();
-                }
-            }
-        }
-
-        public bool IsOpenPreviewerEnabled
-        {
-            get
-            {
-                return _openPreviewerButtonEnabled;
-            }
-
-            set
-            {
-                if (value != _openPreviewerButtonEnabled)
-                {
-                    _openPreviewerButtonEnabled = value;
+                    _hintLabelText = value;
                     NotifyPropertyChanged();
                 }
             }
@@ -100,7 +80,7 @@ namespace ImageProcessor
             }
         }
 
-        static public ImageProcessorPresentationModel ImageProcesseorPresentationModel
+        static public VideoProcessorPresentationModel Instance
         {
             get
             {

@@ -15,12 +15,12 @@ namespace ImageProcessor
 {
     public partial class EdgeDetectionForm : Form
     {
-        GeneralModel _generalModel;
-        ImageProcessorPresentationModel _presentationModel;
+        VideoModel _videoModel;
+        VideoProcessorPresentationModel _presentationModel;
 
-        public EdgeDetectionForm(GeneralModel generalModel, ImageProcessorPresentationModel presentaionModel)
+        public EdgeDetectionForm(VideoModel videoModel, VideoProcessorPresentationModel presentaionModel)
         {
-            _generalModel = generalModel;
+            _videoModel = videoModel;
             _presentationModel = presentaionModel;
             InitializeComponent();
             BindData();
@@ -41,16 +41,17 @@ namespace ImageProcessor
             ImageProcessFunctions functions = new ImageProcessFunctions();
             int threshold = (int)_sobelThresholdNumericUpDown.Value;
 
-            Image<Bgr, byte> sobelImage = functions.GetSobel(_generalModel.ProcessedImage, threshold);
-            _generalModel.ProcessedImage = sobelImage;
+            _videoModel.SetProcessMethod(ImageProcessFunctions.Methods.Sobel, threshold);
+            _videoModel.Play();
         }
 
         private void ClickLaplacianButton(object sender, EventArgs e)
         {
             ImageProcessFunctions functions = new ImageProcessFunctions();
             int aperture = (int)_apertureSizeNumericupDown.Value;
-            Image<Bgr, byte> laplacianImage = functions.GetLaplacian(_generalModel.ProcessedImage, aperture);
-            _generalModel.ProcessedImage = laplacianImage;
+
+            _videoModel.SetProcessMethod(ImageProcessFunctions.Methods.Laplacian, aperture);
+            _videoModel.Play();
         }
 
         private void ClickCannyButton(object sender, EventArgs e)
@@ -59,8 +60,8 @@ namespace ImageProcessor
             int thresh = (int)_cannyThreshNumericUpDown.Value;
             int threshLinking = (int)_cannyThreshLinkingNumericUpDown.Value;
 
-            Image<Bgr, byte> cannyImage = functions.GetCanny(_generalModel.ProcessedImage, thresh, threshLinking);
-            _generalModel.ProcessedImage = cannyImage;
+            _videoModel.SetProcessMethod(ImageProcessFunctions.Methods.Canny, thresh, threshLinking);
+            _videoModel.Play();
         }
     }
 }

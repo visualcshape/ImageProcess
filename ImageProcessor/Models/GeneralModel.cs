@@ -10,7 +10,7 @@ using Emgu.CV;
 
 namespace ImageProcessor
 {
-    public class GeneralModel
+    public class ImageModel
     {
         public delegate void LoadOriginalImageEventHandler();
         public event LoadOriginalImageEventHandler LoadOrginalImage;
@@ -29,7 +29,7 @@ namespace ImageProcessor
         Image<Bgr, Byte> _originalImage;
         Image<Bgr, Byte> _processedImage;
 
-        public GeneralModel()
+        public ImageModel()
         {
             _imagePath = "";
         }

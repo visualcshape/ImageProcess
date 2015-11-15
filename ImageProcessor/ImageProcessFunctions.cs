@@ -18,6 +18,19 @@ namespace ImageProcessor
             Type2
         }
 
+        public enum Methods
+        {
+            GrayScale,
+            Thresholding,
+            Inverse,
+            Mosaic,
+            Averaging,
+            HighBoost,
+            Sobel,
+            Laplacian,
+            Canny
+        }
+
         public ImageProcessFunctions()
         {
 
